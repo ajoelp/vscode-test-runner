@@ -50,7 +50,8 @@
 		"compile": "tsc -p ./",
 		"lint": "eslint src tests --ext ts",
 		"watch": "tsc -watch -p ./",
-		"test": "jest"
+    "test": "jest",
+    "deploy": "vsce publish"
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.3",
