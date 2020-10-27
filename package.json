@@ -2,7 +2,7 @@
 	"name": "test-runner",
 	"displayName": "Test Runner",
 	"description": "Run tests the way I like it",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"engines": {
 		"vscode": "^1.50.0"
 	},
