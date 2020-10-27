@@ -7,7 +7,7 @@
 		"type": "git",
 		"url": "https://github.com/ajoelp/vscode-test-runner.git"
 	},
-	"version": "1.0.7",
+	"version": "1.0.8",
 	"engines": {
 		"vscode": "^1.50.0"
 	},
@@ -48,21 +48,21 @@
 				"command": "test-runner.runHistory",
 				"key": "ctrl+r h"
 			}
-    ],
-    "taskDefinitions": [
-      {
-        "type": "testrunner",
-        "required": [
-            "task"
-        ],
-        "properties": {
-            "task": {
-                "type": "string",
-                "description": "The task to execute"
-            }
-        }
-      }
-    ]
+		],
+		"taskDefinitions": [
+			{
+				"type": "testrunner",
+				"required": [
+					"task"
+				],
+				"properties": {
+					"task": {
+						"type": "string",
+						"description": "The task to execute"
+					}
+				}
+			}
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
