@@ -2,7 +2,7 @@
 	"name": "test-runner",
 	"displayName": "Test Runner",
 	"description": "Run tests the way I like it",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"engines": {
 		"vscode": "^1.50.0"
 	},
@@ -50,8 +50,8 @@
 		"compile": "tsc -p ./",
 		"lint": "eslint src tests --ext ts",
 		"watch": "tsc -watch -p ./",
-    "test": "jest",
-    "deploy": "vsce publish"
+		"test": "jest",
+		"deploy": "vsce publish"
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.3",
