@@ -1,7 +1,12 @@
 {
 	"name": "test-runner",
 	"displayName": "Test Runner",
-	"description": "Run tests the way I like it",
+  "description": "Run tests the way I like it",
+  "publisher": "joelpod",
+  "repository": {
+		"type": "git",
+		"url": "https://github.com/ajoelp/vscode-test-runner.git"
+	},
 	"version": "1.0.3",
 	"engines": {
 		"vscode": "^1.50.0"
