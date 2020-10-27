@@ -1,8 +1,14 @@
-import TaskManager, { TERMINAL_NAME } from "../../src/services/TaskManager";
+import TaskManager, { TERMINAL_NAME } from "./TaskManager";
 import { window } from "vscode";
 import { mocked } from "ts-jest/utils";
+import { runCommand } from "../extension";
 
 const mockedCreateTerminal = mocked(window.createTerminal);
+const mockedRunCommand = mocked(runCommand);
+
+jest.mock("../extension", () => ({
+  runCommand: jest.fn(),
+}));
 
 describe("TaskManager", () => {
   afterEach(() => {
@@ -17,8 +23,7 @@ describe("TaskManager", () => {
 
     TaskManager.runTask(command, uri, type);
 
-    expect(window.createTerminal).toHaveBeenCalledTimes(1);
-    expect(window.createTerminal).toHaveBeenCalledWith(TERMINAL_NAME);
+    expect(runCommand).toHaveBeenCalledTimes(1);
     expect(TaskManager.tasks).toEqual([
       expect.objectContaining({
         command,
@@ -44,8 +49,7 @@ describe("TaskManager", () => {
         type,
       }),
     ]);
-    expect(window.createTerminal).toHaveBeenCalledTimes(2);
-    expect(window.createTerminal).toHaveBeenCalledWith(TERMINAL_NAME);
+    expect(runCommand).toHaveBeenCalledTimes(2);
   });
 
   it("will rerun a command at index", () => {
@@ -61,11 +65,8 @@ describe("TaskManager", () => {
     TaskManager.tasks = [task1, task2];
 
     TaskManager.rerunByIndex(1);
-    expect(window.createTerminal).toHaveBeenCalledTimes(1);
-    expect(window.createTerminal).toHaveBeenCalledWith(TERMINAL_NAME);
-    expect(mockTerminal.show).toHaveBeenCalledTimes(1);
-    expect(mockTerminal.sendText).toHaveBeenCalledTimes(1);
-    expect(mockTerminal.sendText).toHaveBeenCalledWith(`clear && ${task2.command}`);
+    expect(runCommand).toHaveBeenCalledTimes(1);
+    expect(runCommand).toHaveBeenCalledWith(task2);
   });
 
   it("will rerun lastCommand", () => {
@@ -81,10 +82,7 @@ describe("TaskManager", () => {
     TaskManager.tasks = [task1, task2];
 
     TaskManager.rerunLast();
-    expect(window.createTerminal).toHaveBeenCalledTimes(1);
-    expect(window.createTerminal).toHaveBeenCalledWith(TERMINAL_NAME);
-    expect(mockTerminal.show).toHaveBeenCalledTimes(1);
-    expect(mockTerminal.sendText).toHaveBeenCalledTimes(1);
-    expect(mockTerminal.sendText).toHaveBeenCalledWith(`clear && ${task1.command}`);
+    expect(runCommand).toHaveBeenCalledTimes(1);
+    expect(runCommand).toHaveBeenCalledWith(task1);
   });
 });

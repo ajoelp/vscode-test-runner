@@ -45,10 +45,24 @@
 				"key": "ctrl+r r"
 			},
 			{
-				"command": "test-runner.runLast",
+				"command": "test-runner.runHistory",
 				"key": "ctrl+r h"
 			}
-		]
+    ],
+    "taskDefinitions": [
+      {
+        "type": "testrunner",
+        "required": [
+            "task"
+        ],
+        "properties": {
+            "task": {
+                "type": "string",
+                "description": "The task to execute"
+            }
+        }
+      }
+    ]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

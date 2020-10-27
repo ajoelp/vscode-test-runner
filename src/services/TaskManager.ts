@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { runCommand } from "../extension";
 
 export interface CommandType {
   type: string;
@@ -41,22 +42,11 @@ class TaskManager {
   }
 
   runCommand(command: CommandType) {
-    let terminal = this.getTerminal();
-    if (!terminal) {
-      terminal = vscode.window.createTerminal(TERMINAL_NAME);
-    }
-
-    terminal.show();
-    terminal.sendText(`clear && ${command.command}`);
-    //TODO: focus on the editor again.
+    runCommand(command);
   }
 
   clean() {
     this.tasks = [];
-  }
-
-  private getTerminal() {
-    return vscode.window.terminals.find((terminal) => terminal.name === TERMINAL_NAME);
   }
 }
 
