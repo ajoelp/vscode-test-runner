@@ -1,10 +1,9 @@
-import TaskManager, { TERMINAL_NAME } from "./TaskManager";
+import TaskManager from "./TaskManager";
 import { window } from "vscode";
 import { mocked } from "ts-jest/utils";
 import { runCommand } from "../extension";
 
 const mockedCreateTerminal = mocked(window.createTerminal);
-const mockedRunCommand = mocked(runCommand);
 
 jest.mock("../extension", () => ({
   runCommand: jest.fn(),
