@@ -7,8 +7,6 @@ export interface CommandType {
   command: string;
 }
 
-export const TERMINAL_NAME = "testrunner";
-
 class TaskManager {
   tasks: CommandType[] = [];
 
