@@ -2,25 +2,25 @@
 
 ## Extensions commands
 
-```json
-	{
-				"command": "test-runner.run",
-				"title": "Run test file"
-			},
-			{
-				"command": "test-runner.runLast",
-				"title": "Rerun last test"
-			},
-			{
-				"command": "test-runner.runHistory",
-				"title": "Rerun test from history"
-			}
+```js
+{
+  "command": "test-runner.run",
+  "title": "Run test file"
+},
+{
+  "command": "test-runner.runLast",
+  "title": "Rerun last test"
+},
+{
+  "command": "test-runner.runHistory",
+  "title": "Rerun test from history"
+}
 ```
 
 
 ## Extension default keybindings
 
-```json
+```js
 {
   "command": "test-runner.run",
   "key": "ctrl+r t"
