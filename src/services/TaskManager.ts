@@ -6,7 +6,7 @@ export interface CommandType {
   command: string;
 }
 
-const TERMINAL_NAME = "testrunner";
+export const TERMINAL_NAME = "testrunner";
 
 class TaskManager {
   tasks: CommandType[] = [];
@@ -18,7 +18,12 @@ class TaskManager {
       command: commandValue,
     };
 
-    this.tasks.unshift(command);
+    const [mostRecentCommand] = this.tasks.length > 0 ? this.tasks : [null];
+
+    if (!mostRecentCommand || mostRecentCommand.command !== commandValue) {
+      this.tasks.unshift(command);
+    }
+
     this.runCommand(command);
   }
 
@@ -44,6 +49,10 @@ class TaskManager {
     terminal.show();
     terminal.sendText(`clear && ${command.command}`);
     //TODO: focus on the editor again.
+  }
+
+  clean() {
+    this.tasks = [];
   }
 
   private getTerminal() {

@@ -1,8 +1,8 @@
 {
 	"name": "test-runner",
-	"displayName": "test-runner",
-	"description": "Test runner for vscode",
-	"version": "0.0.1",
+	"displayName": "Test Runner",
+	"description": "Run tests the way I like it",
+	"version": "1.0.0",
 	"engines": {
 		"vscode": "^1.50.0"
 	},
@@ -24,8 +24,8 @@
 			{
 				"command": "test-runner.runLast",
 				"title": "Rerun last test"
-      },
-      {
+			},
+			{
 				"command": "test-runner.runHistory",
 				"title": "Rerun test from history"
 			}
@@ -38,23 +38,23 @@
 			{
 				"command": "test-runner.runLast",
 				"key": "ctrl+r r"
-      },
-      {
+			},
+			{
 				"command": "test-runner.runLast",
 				"key": "ctrl+r h"
 			}
-    ]
+		]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
-		"lint": "eslint src --ext ts",
+		"lint": "eslint src tests --ext ts",
 		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile && npm run lint",
-		"test": "node ./out/test/runTest.js"
+		"test": "jest"
 	},
 	"devDependencies": {
 		"@types/glob": "^7.1.3",
+		"@types/jest": "^26.0.15",
 		"@types/mocha": "^8.0.0",
 		"@types/node": "^12.19.2",
 		"@types/vscode": "^1.50.0",
@@ -63,10 +63,10 @@
 		"eslint": "^7.9.0",
 		"eslint-config-prettier": "^6.14.0",
 		"eslint-plugin-prettier": "^3.1.4",
-		"glob": "^7.1.6",
-		"mocha": "^8.1.3",
+		"jest": "^26.6.1",
 		"prettier": "^2.1.2",
-		"typescript": "^4.0.2",
+		"ts-jest": "^26.4.3",
+		"typescript": "^4.0.5",
 		"vscode-test": "^1.4.0"
 	},
 	"dependencies": {}
